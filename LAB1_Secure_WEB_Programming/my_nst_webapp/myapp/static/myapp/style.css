@@ -1,6 +1,36 @@
+/* style.css */
+
+/* Reset link styles */
 li a {
-    color: green;
+    text-decoration: none;
 }
+
+/* Change link color on hover */
+li a:hover {
+    color: darkgreen;
+}
+
+/* Add some padding and margin to list items */
+.list-group-item {
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Change list item background color on hover */
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Set body background */
 body {
-    background: white url("images/background.png") no-repeat;
+    /* background: white url("images/background.png") no-repeat;
+    background-size: cover; */
+}
+
+/* Add some padding to the container */
+.container {
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
