@@ -1,6 +1,8 @@
 ### 运行程序
 `python3 manage.py runserver`
 
+打开`127.0.0.1:8000/myapp`
+
 ### 改变模型需要三步
 
 编辑 `models.py` 文件，改变模型。
