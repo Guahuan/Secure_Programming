@@ -1,36 +1,26 @@
-/* style.css */
-
-/* Reset link styles */
-li a {
-    text-decoration: none;
+body {
+    background-color: #d5e8fb;
 }
 
-/* Change link color on hover */
 li a:hover {
-    color: darkgreen;
+    color: rgb(134, 0, 146);
 }
 
-/* Add some padding and margin to list items */
+.scrollable {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
 .list-group-item {
-    padding: 15px 20px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    background-color: #b3f3fe;
     transition: background-color 0.3s;
 }
 
-/* Change list item background color on hover */
 .list-group-item:hover {
-    background-color: #f8f9fa;
+    background-color: #ffbebe;
 }
 
-/* Set body background */
-body {
-    /* background: white url("images/background.png") no-repeat;
-    background-size: cover; */
-}
-
-/* Add some padding to the container */
-.container {
-    padding-top: 50px;
-    padding-bottom: 50px;
+h1 {
+    color: #007bff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }

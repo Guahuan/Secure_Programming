@@ -1,6 +1,5 @@
-
-
-
+### 运行程序
+`python3 manage.py runserver`
 
 ### 改变模型需要三步
 
