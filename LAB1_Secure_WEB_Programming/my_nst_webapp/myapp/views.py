@@ -58,7 +58,7 @@ def add_question(request):
     if request.method == 'POST':
         form = QuestionForm(request.POST)
         choice_forms = [ChoiceForm(request.POST, prefix=str(
-            x), instance=Choice()) for x in range(0, 3)]
+            x), instance=Choice()) for x in range(0, 4)]
 
         if form.is_valid() and all([cf.is_valid() for cf in choice_forms]):
             question = form.save()
@@ -69,6 +69,6 @@ def add_question(request):
             return redirect('myapp:index')
     else:
         form = QuestionForm()
-        choice_forms = [ChoiceForm(prefix=str(x)) for x in range(0, 3)]
+        choice_forms = [ChoiceForm(prefix=str(x)) for x in range(0, 4)]
 
     return render(request, 'myapp/add_question.html', {'form': form, 'choice_forms': choice_forms})
