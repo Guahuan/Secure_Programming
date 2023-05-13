@@ -11,23 +11,49 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center my-4">Latest Questions</h1>
-        {% if latest_question_list %}
-            <div class="scrollable">
-                <ul class="list-group">
-                {% for question in latest_question_list %}
-                    <li class="list-group-item"><a href="{% url 'myapp:detail' question.id %}">{{ question.question_text }}</a></li>
-                {% endfor %}
-                </ul>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card my-5">
+                    <div class="card-body">
+                        <h1 class="text-center mb-4">Latest Questions</h1>
+                        <a href="{% url 'myapp:add_question' %}" class="btn btn-primary btn-block mb-3">Add a question</a>
+                        {% if latest_question_list %}
+                            <div class="scrollable">
+                                <ul class="list-group">
+                                {% for question in latest_question_list %}
+                                    <li class="list-group-item"><a href="{% url 'myapp:detail' question.id %}">{{ question.question_text }}</a></li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-warning" role="alert">
+                                No polls are available.
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-        {% else %}
-            <div class="alert alert-warning" role="alert">
-                No polls are available.
-            </div>
-        {% endif %}
+        </div>
     </div>
 </body>
 </html>

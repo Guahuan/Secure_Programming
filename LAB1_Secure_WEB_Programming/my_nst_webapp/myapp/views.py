@@ -1,10 +1,11 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 
 from .models import Choice, Question
+from .forms import QuestionForm, ChoiceForm
 
 
 class IndexView(generic.ListView):
@@ -51,3 +52,23 @@ def vote(request, question_id):
         selected_choice.votes += 1
         selected_choice.save()
         return HttpResponseRedirect(reverse("myapp:results", args=(question.id,)))
+
+
+def add_question(request):
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        choice_forms = [ChoiceForm(request.POST, prefix=str(
+            x), instance=Choice()) for x in range(0, 3)]
+
+        if form.is_valid() and all([cf.is_valid() for cf in choice_forms]):
+            question = form.save()
+            for cf in choice_forms:
+                choice = cf.save(commit=False)
+                choice.question = question
+                choice.save()
+            return redirect('myapp:index')
+    else:
+        form = QuestionForm()
+        choice_forms = [ChoiceForm(prefix=str(x)) for x in range(0, 3)]
+
+    return render(request, 'myapp/add_question.html', {'form': form, 'choice_forms': choice_forms})
