@@ -1,7 +1,12 @@
 ### 运行程序
-`python3 manage.py runserver`
+````shell
+cd my_nst_webapp
+python3 manage.py runserver
+````
 
-打开`127.0.0.1:8000/myapp`
+访问[主页面](http://127.0.0.1:8000/myapp)。
+
+[管理员页面](http://127.0.0.1:8000/admin)：admin@myappadmin。
 
 ### 改变模型需要三步
 
