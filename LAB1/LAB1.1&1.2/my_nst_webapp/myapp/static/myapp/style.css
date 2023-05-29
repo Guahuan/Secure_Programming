@@ -1,0 +1,26 @@
+body {
+    background-color: #d5e8fb;
+}
+
+li a:hover {
+    color: rgb(134, 0, 146);
+}
+
+.scrollable {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.list-group-item {
+    background-color: #b3f3fe;
+    transition: background-color 0.3s;
+}
+
+.list-group-item:hover {
+    background-color: #ffbebe;
+}
+
+h1 {
+    color: #007bff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}

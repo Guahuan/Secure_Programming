@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyApp</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card my-5">
+                    <div class="card-body">
+                        <h1 class="text-center mb-4">Latest Questions</h1>
+                        <a href="{% url 'myapp:add_question' %}" class="btn btn-primary btn-block mb-3">Add a question</a>
+                        {% if latest_question_list %}
+                            <div class="scrollable">
+                                <ul class="list-group">
+                                {% for question in latest_question_list %}
+                                    <li class="list-group-item"><a href="{% url 'myapp:detail' question.id %}">{{ question.question_text }}</a></li>
+                                {% endfor %}
+                                </ul>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-warning" role="alert">
+                                No queations are available.
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
